@@ -49,7 +49,7 @@ namespace GritClicker
 				moneyMultiplier++;
 				level++;
 				levelLabel.Text = String.Format("Level {0}", level);
-				UserCreation.UpgradeUser(new User(name, level, money));
+				UserCreation.UpgradeUser(new User(name, level, money), "up");
 				UpgradeFromDB();
 			}
 			else
@@ -61,7 +61,7 @@ namespace GritClicker
 		public override void _Notification(int what)
 		{
 			if (what == NotificationWMCloseRequest){
-				UserCreation.UpgradeUser(new User(name, level, money));
+				UserCreation.UpgradeUser(new User(name, level, money), "exit");
 			}
 		}
 

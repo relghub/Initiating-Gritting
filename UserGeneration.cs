@@ -44,7 +44,7 @@ namespace GritClicker
             }
         }
 
-        public static void UpgradeUser(User user)
+        public static void UpgradeUser(User user, string option)
         {
             // Assuming Nuggeteering.connection is a valid, already opened connection.
             SqliteConnection curConn = Nuggeteering.connection;
@@ -55,15 +55,22 @@ namespace GritClicker
                 curConn.Open();
             }
 
-            // Prepare the SQL command
-            SqliteCommand insertCommand = new SqliteCommand(
+            // Prepare the SQL command and add parameters to it
+            SqliteCommand insertCommand;
+            switch (option)
+            {
+                case "up":
+                    insertCommand = new SqliteCommand(
                 "UPDATE Users SET Level = @lvl, Money = @money", curConn);
-
-            // Add parameters
-            insertCommand.Parameters.Add("@name", SqliteType.Text).Value = user.Name;
-            insertCommand.Parameters.Add("@lvl", SqliteType.Integer).Value = user.Level;
-            insertCommand.Parameters.Add("@money", SqliteType.Real).Value = user.Money;
-            insertCommand.Parameters.Add("@boost", SqliteType.Integer).Value = 1; // Assuming a default value for Boost
+                    insertCommand.Parameters.Add("@lvl", SqliteType.Integer).Value = user.Level;
+                    insertCommand.Parameters.Add("@money", SqliteType.Real).Value = user.Money;
+                    break;
+                case "exit":
+                    insertCommand = new SqliteCommand(
+                "UPDATE Users SET Money = @money", curConn);
+                    insertCommand.Parameters.Add("@money", SqliteType.Real).Value = user.Money; break;
+                default: return;
+            }
 
             try
             {
