@@ -13,25 +13,21 @@ font_size = 42
 script = ExtResource("1_yqvhp")
 
 [node name="NuggetScore" type="Label" parent="."]
-offset_left = 121.0
 offset_top = 58.0
-offset_right = 382.0
+offset_right = 480.0
 offset_bottom = 116.0
 text = "$0"
 label_settings = SubResource("LabelSettings_bh25u")
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="NuggetLevel" type="Label" parent="."]
-offset_left = 121.0
-offset_right = 382.0
+offset_right = 480.0
 offset_bottom = 58.0
 text = "Level 0"
 label_settings = SubResource("LabelSettings_bh25u")
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Nugget" type="TextureButton" parent="."]
 offset_left = 121.0

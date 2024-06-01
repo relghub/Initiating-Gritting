@@ -11,7 +11,7 @@ namespace GritClicker
 		private int level = 1;
 		private long money = 0;
 		private int upgradeCost = 0;
-		private int moneyMultiplier = 1;
+		private int moneyMultiplier;
 		private string textureLocation;
 		private Label levelLabel;
 		private Label moneyLabel;
@@ -31,8 +31,14 @@ namespace GritClicker
 			List<string> data = DataParseOnStart(connection);
 			name = data[0];
 			level = Int32.Parse(data[1]);
-			money = Int32.Parse(data[2]);
 			levelLabel.Text = String.Format("Level {0}", level);
+			moneyMultiplier = level;
+			money = Int32.Parse(data[2]);
+			moneyLabel.Text = String.Format("${0}", money.ToString());
+			upgradeCost = Int32.Parse(data[4]);
+			textureLocation = data[5];
+			nuggetButton.TextureNormal = (Texture2D)GD.Load(textureLocation);
+			
 		}
 
 		public void OnClick()
