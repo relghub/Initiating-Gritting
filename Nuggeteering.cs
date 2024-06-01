@@ -17,7 +17,8 @@ namespace GritClicker
 		private Label moneyLabel;
 		private TextureButton nuggetButton;
 		private Button upgradeButton;
-		internal const string connectionString = "Data Source=./mp3.db;";
+		internal static string dbLocation = ProjectSettings.GlobalizePath("res://db/mp3.db");
+		internal static string connectionString = "Data Source="+dbLocation+";";
 		internal static SqliteConnection connection = new(connectionString);
 
 		public override void _Ready()

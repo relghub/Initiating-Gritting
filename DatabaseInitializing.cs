@@ -45,7 +45,7 @@ namespace GritClicker
             {
                 Console.WriteLine($"Не вдалося з'єднатися: {ex.Message}");
             }
-            SqliteCommand retrieveCommand = new("SELECT u.Nickname, u.Level, u.Money, u.Boost, p.Upgrade_cost, p.Location FROM Users u INNER JOIN Players p ON u.Level = p.Level WHERE u.ID = 1", conn);
+            SqliteCommand retrieveCommand = new("SELECT u.Nickname, u.Level, u.Money, u.Boost, p.Upgrade_cost, p.Location FROM Users u INNER JOIN Players p ON u.Level = p.Level WHERE u.Nickname = \"Default\"", conn);
             using (SqliteDataReader reader = retrieveCommand.ExecuteReader())
             {
                 while (reader.Read())
