@@ -18,7 +18,7 @@ namespace GritClicker
 		private TextureButton nuggetButton;
 		private Button upgradeButton;
 		internal static string dbLocation = ProjectSettings.GlobalizePath("res://db/mp3.db");
-		internal static string connectionString = "Data Source="+dbLocation+";";
+		internal static string connectionString = "Data Source=" + dbLocation + ";";
 		internal static SqliteConnection connection = new(connectionString);
 
 		public override void _Ready()
@@ -39,7 +39,7 @@ namespace GritClicker
 			upgradeCost = Int32.Parse(data[4]);
 			textureLocation = data[5];
 			nuggetButton.TextureNormal = (Texture2D)GD.Load(textureLocation);
-			
+
 		}
 
 		public void OnClick()
@@ -67,7 +67,8 @@ namespace GritClicker
 
 		public override void _Notification(int what)
 		{
-			if (what == NotificationWMCloseRequest){
+			if (what == NotificationWMCloseRequest)
+			{
 				UserCreation.UpgradeUser(new User(name, level, money), "exit");
 			}
 		}
